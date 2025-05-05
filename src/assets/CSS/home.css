@@ -1,0 +1,569 @@
+/* General Reset */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #01224f;
+  overflow-x: hidden;
+}
+
+/* Hero Text Styling */
+.hero-text {
+  text-align: center; /* Center the text */
+}
+
+.hero-words {
+  display: flex;
+  justify-content: space-between; /* Space out elements */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Full width of container */
+  margin-top: 1rem; /* Adjust spacing as needed */
+  flex-wrap: nowrap; /* Prevent wrapping of child elements */
+}
+
+.word-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.first-word-container {
+  flex: 0 0 25%; /* Takes up 25% of the width */
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* Align the first word to the right */
+  align-items: center; /* Center vertically */
+  height: 100%;
+}
+
+.last-word-container {
+  flex: 0 0 25%; /* Takes up 25% of the width */
+  position: relative;
+  display: flex;
+  justify-content: flex-start; /* Align the last word to the left */
+  align-items: center; /* Center vertically */
+  height: 100%;
+}
+
+.first-word,
+.last-word {
+  position: absolute; /* Position the words absolutely inside their containers */
+  font-size: 1.5rem;
+  width: auto; /* Allow the width of the word to be as wide as the word itself */
+  transition: opacity 0.5s ease;
+}
+
+/* Fade Transition for Vertical Bounce Removed */
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease; /* Smooth fade-in without bounce */
+}
+
+.fade-out {
+  opacity: 0;
+  text-shadow: none;
+}
+
+/* Bridge Image Container */
+.image-container {
+  flex: 0 0 50%; /* Bridge image takes 50% of the width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bridge Image Styling */
+.hero-bridge {
+  width: 100%; /* Ensure image takes up 100% of the container width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Keep the image's aspect ratio intact */
+  opacity: 1; /* Fully visible */
+  transition: width 0.5s ease; /* Optional smooth transition for resizing */
+}
+
+/* Small Font Styling */
+.small-font {
+  font-size: 1.5rem; /* Adjust this value for the smaller font */
+}
+
+/* Fade Transition */
+.fade {
+  transition: opacity 0.5s ease; /* Smooth fade transition */
+}
+
+.fade-in {
+  opacity: 1;
+  text-shadow: 2px 2px 5px rgba(255, 200, 14, 0.7); /* Add text-shadow for fade-in */
+}
+
+.fade-out {
+  opacity: 0;
+  text-shadow: none; /* Remove shadow during fade-out */
+}
+
+/* Adjust font size for first and last words on smaller screens */
+@media (max-width: 768px) {
+  .first-word,
+  .last-word {
+    font-size: 1rem; /* Smaller font size for small screens */
+  }
+
+  /* Ensure hero words remain horizontal but scale nicely */
+  .hero-words {
+    justify-content: space-evenly; /* Evenly space out the elements */
+    align-items: center; /* Center vertically */
+  }
+
+  /* Adjust container widths */
+  .first-word-container,
+  .image-container,
+  .last-word-container {
+    flex: 1 1 30%; /* Allow each container to take 30% of the screen width */
+    max-width: 33%; /* Ensure they don't stretch too much */
+  }
+
+  .hero-bridge {
+    max-width: auto; /* Ensure image fits well on mobile */
+  }
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #ffc80e;
+  width: 0;
+  transition: width 0.2s ease;
+}
+
+/* Navbar Styles */
+.top-navigation {
+  position: fixed;
+  top: 50%;
+  left: 15px; /* Increase this value for more gap from the left */
+  width: 200px;
+  height: 100%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.top-navigation.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.top-navigation.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.stick-top-nav-ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stick-top-nav-ul li {
+  width: 150px; /* Fixed width for li */
+  margin: 0; /* Remove vertical margin */
+  position: relative; /* For positioning the underline */
+  text-align: left;
+  overflow-wrap: break-word; /* Ensure long words wrap */
+  transition: margin-bottom 0.3s ease; /* Smooth transition for bottom margin */
+
+  /* Add a fixed height and center text vertically */
+  height: 60px; /* Adjust this value as per your design */
+  display: flex;
+  align-items: top; /* Vertically center the content */
+}
+
+.underline {
+  width: 20%; /* Initial width of the underline */
+  height: 1.5px; /* Height of the underline */
+  background: #fff; /* Underline color */
+  position: absolute;
+  top: 0; /* Position it at the top of the text */
+  left: 10px; /* Space from the left */
+  opacity: 1; /* Always show underline */
+  transition: width 0.3s ease; /* Transition for width */
+}
+
+/* Underline adjustment */
+.stick-top-nav-ul li:hover .underline,
+.stick-top-nav-ul li.nav-active .underline {
+  width: 40%; /* Width when hovered or active */
+  height: 4px; /* Increase height for better visibility */
+}
+
+.stick-top-nav-ul li a {
+  text-decoration: none;
+  color: #ffc80e;
+  display: inline-block; /* Change to inline-block */
+  padding: 10px 10px; /* Use padding for spacing */
+  font-size: 16px;
+  position: relative; /* Make it relative for the text */
+  opacity: 0; /* Hide text initially */
+  transition: opacity 0.5s ease; /* Smooth transition for text visibility */
+  width: 100%; /* Make anchor tag take full width of li */
+  text-align: left; /* Center the text horizontally */
+}
+
+/* Ensure hover state works smoothly */
+.stick-top-nav-ul li:hover a,
+.stick-top-nav-ul li.nav-active a {
+  opacity: 1; /* Show text on hover or when active */
+}
+/* Add bottom margin for the active list item */
+.stick-top-nav-ul li.nav-active {
+  margin-bottom: 40px; /* Space below the active item */
+}
+
+
+
+/* Section Styles */
+.section {
+  position: relative;
+  height: 100vh; /* Default for larger screens */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  padding: 0 20px;
+}
+
+.section h2 {
+  color: #ffc80e;
+}
+
+#hero_slider {
+  background-image: url("https://res.cloudinary.com/dcjmaapvi/image/upload/v1730803138/Rectangle_48try_vdlvku.avif");
+  background-position: right; /* Align the background image to the right side */
+  background-size: contain; /* Ensure the background image covers the section */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+#core_capabilities {
+  background-image: url("https://res.cloudinary.com/dcjmaapvi/image/upload/v1730786473/homeland2_iiwltn.avif");
+}
+
+#operating_models {
+  background-image: url("https://res.cloudinary.com/dcjmaapvi/image/upload/v1730786473/homeland3_konwok.avif");
+}
+
+#talent_transformations {
+  background-image: url("https://res.cloudinary.com/dcjmaapvi/image/upload/v1730786473/homeland4_cel82n.avif");
+}
+
+#do_more {
+  background-image: url("https://res.cloudinary.com/dcjmaapvi/image/upload/v1730786473/homeland5_fjba9x.avif");
+}
+
+/* Default styling for large screens (background-size: contain) */
+#core_capabilities,
+#operating_models,
+#talent_transformations,
+#do_more {
+  background-size: contain; /* Default to contain for large screens */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+/* Media query for screens between 768px and 1024px */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  #hero_slider,
+  #core_capabilities,
+  #operating_models,
+  #talent_transformations,
+  #do_more {
+    background-size: cover; /* Use cover for medium-large screens (between 768px and 1024px) */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+  }
+}
+
+.section-content {
+  max-width: 700px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.section-content.left {
+  text-align: left;
+  margin-right: auto;
+  padding-left: 5vw; /* Default for small screens */
+}
+
+.section-content.right {
+  text-align: left;
+  margin-left: 10px;
+  padding-right: 5vw; /* Default for small screens */
+}
+
+@media (min-width: 768px) {
+  .section-content.left {
+    padding-left: 13vw; /* Change to 8vw for larger screens */
+  }
+
+  .section-content.right {
+    padding-right: 8vw; /* Change to 8vw for larger screens */
+    margin-left: auto;
+  }
+}
+
+.section-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.section-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Default Button Styles (For Desktop & Larger Screens) */
+.btn-know-more {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: transparent;
+  border: 0.5px solid #ffffff;
+  text-decoration: none;
+  overflow: hidden;
+  transition: color 0.3s ease, transform 0.3s ease;
+  outline: none; /* Remove default outline */
+}
+
+/* Button background transition effect */
+.btn-know-more::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #ffc80e;
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+.btn-know-more:hover::before {
+  left: 0;
+}
+
+.btn-know-more:hover {
+  color: #01224f;
+  transform: translateY(-3px) scale(1.05); /* Slight scaling on hover */
+}
+
+.btn-know-more span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile Styles (Under 768px) */
+@media (max-width: 768px) {
+  .btn-know-more {
+    padding: 6px 12px;
+    font-size: 1rem;
+    background-color: transparent; /* Set background to transparent */
+    border: 0.5px solid #ffffff; /* Keep border visible */
+    color: #ffffff; /* Set text color to white */
+    text-align: center; /* Center the text */
+  }
+
+  .btn-know-more::before {
+    display: none; /* Remove the background transition on mobile */
+  }
+
+  .btn-know-more:hover {
+    color: #ffc80e; /* Text color turns black on hover */
+    transform: none; /* No scaling or transition effect on hover */
+  }
+
+  .btn-know-more span {
+    z-index: 1;
+  }
+}
+
+
+
+/* Company Logo */
+.company-logo-link {
+  position: fixed;
+  padding-top: 6px;
+  top: 6px;
+  left: 8vw;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 11;
+  text-decoration: none;
+}
+
+/* For older MacBook Pro 13-inch (with resolution less than 1440px) */
+@media (max-width: 1439px) {
+  .company-logo-link {
+    width: 250px; /* Adjust for older models */
+    height: 100px; /* Adjust for older models */
+  }
+}
+
+/* For new MacBooks (with resolution 1440px or more) */
+@media (min-width: 1440px) {
+  .company-logo-link {
+    width: 300px; /* Keep the width same for new MacBooks */
+    height: 150px; /* Keep the height same for new MacBooks */
+  }
+}
+
+
+/* For latest iPhones in landscape mode */
+@media (min-width: 331px) and (max-width: 844px) {
+  .company-logo-link {
+    left: 0vw; /* Adjust left position */
+    width: 220px; /* Slightly larger size for landscape */
+    height: 80px; /* Adjust height accordingly */
+  }
+}
+
+.hidden-on-large {
+  display: none; /* Hide by default */
+}
+
+.company-logo {
+
+  width: 100%;
+  height: 100%;
+  background: url("https://res.cloudinary.com/dcjmaapvi/image/upload/v1740489025/ga-hori_ylcnm3.png")
+    no-repeat center center;
+  background-size: contain;
+}
+
+/* Image Styles */
+.right-side-image {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25%;
+  height: auto;
+  max-height: 100%;
+  z-index: 0;
+}
+
+.left-side-image {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  width: 25%;
+  height: auto;
+  max-height: 100%;
+  z-index: 0;
+}
+
+/* Adjust mobile-vector-image styling */
+.mobile-vector-image {
+  display: none; /* Hide by default */
+}
+
+/* Show only on small screens */
+@media (max-width: 768px) {
+  .mobile-vector-image {
+    display: block; /* Show on small screens */
+    position: relative; /* Allow positioning */
+    margin-top: 20px; /* Space below the section content */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Center correction */
+  }
+
+  /* Align section content to left */
+  .section-content {
+    text-align: left; /* Align to left */
+    padding: 0 10px; /* Adjust padding as needed */
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .top-navigation {
+    display: none;
+  }
+
+  .hero-slider-section {
+    margin-top: 80px;
+  }
+
+  .section {
+    background-color: #01224f;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    height: auto; /* Removed 100vh for small screens */
+  }
+
+  #hero_slider,
+  #core_capabilities,
+  #operating_models,
+  #talent_transformations,
+  #do_more {
+    background-image: none;
+  }
+
+  .section-content {
+    position: relative;
+    top: 20px;
+    width: 100%;
+    z-index: 1;
+    text-align: left;
+  }
+
+  /* Position side images */
+  .right-side-image,
+  .left-side-image {
+    position: absolute;
+    top: 30%; /* Center vertically */
+    width: auto; /* Use original width */
+    height: auto; /* Use original height */
+    max-height: none; /* Remove max-height restriction */
+    opacity: 0.9; /* Make the image semi-transparent */
+    z-index: 0;
+  }
+
+  .right-side-image {
+    right: 0; /* Stick to the right edge */
+    transform: translateY(-50%); /* Center horizontally */
+  }
+
+  .left-side-image {
+    left: 0; /* Stick to the left edge */
+    transform: translateY(-50%) scaleX(-1); /* Flip horizontally and center */
+  }
+}
