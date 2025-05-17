@@ -9,10 +9,6 @@ export default defineConfig({
     react(),  // Vite React plugin
     Inspect(),  // Add the Inspect plugin here
   ],
-  server: {
-    host: '0.0.0.0',   // 👈 Add this line
-    port: 5173,        // (ya jo bhi port tu chahta hai)
-  },
   css: {
     postcss: {
       plugins: [tailwindcss],  // Add tailwindcss to PostCSS plugins

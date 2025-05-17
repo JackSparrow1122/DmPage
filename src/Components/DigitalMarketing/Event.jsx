@@ -3,41 +3,34 @@ import img1 from '/public/dmpage/br1.jpg';
 import img2 from '/public/dmpage/br2.jpg';
 import img3 from '/public/dmpage/br3.jpg';
 import img4 from '/public/dmpage/br4.jpg';
-import img5 from '/public/dmpage/br5.jpg';
-import img6 from '/public/dmpage/br6.jpg';
-import bg from '/public/dmpage/bg.jpg';
 
 const events = [
   {
-    name: "Music Festival",
-    bg: img1,
-  },
-  {
-    name: "Art Exhibition",
+    name: "Dual Expertise",
     bg: img2,
+    content: "We bring combined knowledge of event management and digital marketing to deliver unmatched experiences."
   },
   {
-    name: "Tech Conference",
+    name: "Integrated Event + DM Services",
+    bg: img1,
+    content: "Our seamless integration of event planning and digital promotions ensures maximum impact and reach."
+  },
+  {
+    name: "Customized for You",
     bg: img3,
+    content: "Every campaign is uniquely designed to reflect your brand identity and goals."
   },
   {
-    name: "Food Carnival",
+    name: "From Campus to Corporates",
     bg: img4,
-  },
-  {
-    name: "Branding Identity",
-    bg: img5,
-  },
-  {
-    name: "Digital Project Design",
-    bg: img6,
+    content: "Whether it’s a college fest or a corporate conference, we’ve done it all with equal finesse."
   },
 ];
 
 export default function EventsList() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null); // NEW STATE for click
 
-  // Preload images
   useEffect(() => {
     events.forEach((event) => {
       const img = new Image();
@@ -45,7 +38,7 @@ export default function EventsList() {
     });
   }, []);
 
-  const defaultBg = bg; // Default background if not hovered
+  const defaultBg = '';
 
   return (
     <div className="relative w-full h-auto overflow-hidden py-10">
@@ -55,50 +48,56 @@ export default function EventsList() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${hoveredIndex !== null ? events[hoveredIndex].bg : defaultBg})`,
-          transition: "background-image 0s ease-in-out", // Instant change
+          transition: "background-image 0s ease-in-out",
         }}
       />
 
       {/* Events Section */}
-      <div className="relative z-10 flex flex-col items-start justify-center h-full px-10 backdrop-brightness-30">
+      <div className="relative z-10 flex flex-col justify-center h-full px-10 backdrop-brightness-30">
         
-        {/* Heading */}
-        <h1 className="text-5xl font-bold text-white mb-12">
-          Events of Gryphon Academy
+        <h1 className="text-5xl font-bold text-white mb-12 text-center">
+          What Sets <span className="text-[#f2b800]">Gryphon</span> DM Apart? 
         </h1>
 
         <ul className="w-full">
-  {events.map((event, index) => (
-    <li
-      key={index}
-      className="w-full cursor-pointer"
-      onMouseEnter={() => setHoveredIndex(index)}
-      onMouseLeave={() => setHoveredIndex(null)}
-    >
-      <div className="py-6"> {/* yeh spacing de raha hai visually */}
-        <div className="flex items-center gap-3 px-4 rounded-lg transition-all duration-300">
-        <span
-  className={`text-5xl font-semibold transition-all duration-300 ${
-    hoveredIndex === index ? "translate-x-7 text-black" : "text-white"
-  }`}
->
-  {event.name}
-</span>
-        <span
-  className={` text-5xl transition-transform transition-opacity duration-300 origin-center pl-4 ${
-    hoveredIndex === index
-      ? "scale-125 opacity-100 translate-x-10"
-      : "scale-100 opacity-0 translate-x-0"
-  }`}
->
-  →
-</span>
+          {events.map((event, index) => (
+            <li
+              key={index}
+              className="w-full cursor-pointer"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => setSelectedIndex(index === selectedIndex ? null : index)} // TOGGLE
+            >
+              <div className="py-6">
+                <div className="flex items-center gap-3 px-4 rounded-lg transition-all duration-300">
+                  <span
+                    className={`text-4xl font-semibold transition-all duration-300 ${
+                      hoveredIndex === index ? "translate-x-7 text-black" : "text-white"
+                    }`}
+                  >
+                    {event.name}
+                  </span>
+                  <span
+                    className={`text-5xl transition-transform transition-opacity duration-300 origin-center pl-4 ${
+                      hoveredIndex === index
+                        ? "scale-125 opacity-100 translate-x-10"
+                        : "scale-100 opacity-0 translate-x-0"
+                    }`}
+                  >
+                    →
+                  </span>
+                </div>
 
-        </div>
-      </div>
-    </li>
-  ))}
-</ul>
+                {/* Content shown on click */}
+                {selectedIndex === index && (
+                  <div className="mt-4 px-6 text-white text-lg transition-all duration-500">
+                    {event.content}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
