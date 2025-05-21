@@ -55,11 +55,11 @@ const RevenueSection = () => {
   }, []);
 
   return (
-    <section className="bg-white py-16 relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden ">
       {/* Heading */}
       <div className="max-w-5xl mx-auto text-center mb-12 relative z-10 px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-          How We Drive Revenue
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          How <span className="text-[#F2B800]">We Drive</span> Revenue
         </h2>
       </div>
 
@@ -87,7 +87,7 @@ const RevenueSection = () => {
             {/* Row Content */}
             <div className="lg:ml-[250px] px-4 sm:px-6 lg:px-8 pt-8 pb-10 grid grid-cols-1 sm:grid-cols-3 items-start min-h-[170px] relative z-10 gap-y-6 sm:gap-x-12">
               {/* Title */}
-              <div className="text-2xl sm:text-3xl font-bold text-gray-900 text-left sm:text-right leading-tight">
+              <div className="text-2xl sm:text-3xl font-bold text-white text-left sm:text-right leading-tight">
                 {section.title}
               </div>
 
@@ -96,7 +96,7 @@ const RevenueSection = () => {
                 {section.items.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between text-base sm:text-lg font-semibold text-gray-800 hover:text-blue-600 cursor-pointer"
+                    className="flex items-center justify-between text-base sm:text-lg font-semibold text-white hover:text-[#F2B800] cursor-pointer"
                   >
                     <span>{item}</span>
                     <span className="font-bold"></span>

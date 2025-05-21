@@ -2,15 +2,17 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import img1 from "../../assets/account-based.avif";
+import img2 from "../../assets/account-based.avif";
+import img3 from "../../assets/account-based.avif";
+import img4 from "../../assets/account-based.avif";
+import img5 from "../../assets/account-based.avif";
+import img6 from "../../assets/account-based.avif";
+import img7 from "../../assets/account-based.avif";
+import img8 from "../../assets/account-based.avif";
+// Add as many as you need
 
-const testimonials = Array.from({ length: 10 }, (_, i) => ({
-  name: `USER ${i + 1}`,
-  title: `Position ${i + 1}`,
-  image: `https://randomuser.me/api/portraits/men/${i + 10}.jpg`,
-  quote:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-}));
+gsap.registerPlugin(ScrollTrigger);
 
 export default function TestimonialsSlider() {
   const containerRef = useRef(null);
@@ -19,7 +21,7 @@ export default function TestimonialsSlider() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768); // md: breakpoint
+      setIsDesktop(window.innerWidth >= 768);
     };
 
     handleResize();
@@ -34,7 +36,6 @@ export default function TestimonialsSlider() {
       const heading = headingRef.current;
       const lines = heading.querySelectorAll(".line");
 
-      // Heading animation
       gsap.fromTo(
         lines[0],
         { x: -800 },
@@ -83,36 +84,37 @@ export default function TestimonialsSlider() {
         }
       );
 
-      // Horizontal scroll for testimonials (desktop)
-const container = containerRef.current;
-const sliderContent = container.querySelector(".slider-content");
+      const container = containerRef.current;
+      const sliderContent = container.querySelector(".slider-content");
 
-gsap.to(sliderContent, {
-  x: () => -(sliderContent.scrollWidth - container.offsetWidth),
-  ease: "none",
-  scrollTrigger: {
-    trigger: container,
-    start: "top top",
-    pin: true,
-    scrub: 1,
-    end: () => "+=" + (sliderContent.scrollWidth - container.offsetWidth),
-  },
-});
-
+      gsap.to(sliderContent, {
+        x: () => -(sliderContent.scrollWidth - container.offsetWidth),
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top top",
+          pin: true,
+          scrub: 1,
+          end: () => "+=" + (sliderContent.scrollWidth - container.offsetWidth),
+        },
+      });
     }, containerRef);
 
     return () => ctx.revert();
   }, [isDesktop]);
+
+  // List of manually imported images
+  const images = [img1, img2, img3,img4, img5, img6,img7, img8,]; // Add more if needed
 
   return (
     <>
       {/* Heading Section */}
       <section className="w-full flex items-center justify-center text-white mt-6 px-4 md:px-16">
         <div ref={headingRef} className="text-center">
-          <h2 className="text-5xl md:text-6xl lg:text-8xl font-extrabold uppercase leading-tight">
-            <div className="line">What</div>
-            <div className="line text-[#f2b800]">Our Clients</div>
-            <div className="line">Say</div>
+          <h2 className="text-2xl md:text-5xl font-extrabold uppercase leading-tight">
+            <div className="line">Digital</div>
+            <div className="line text-[#f2b800]">Marketing</div>
+            <div className="line">Gryphon</div>
           </h2>
         </div>
       </section>
@@ -120,32 +122,23 @@ gsap.to(sliderContent, {
       {/* Testimonials Section */}
       <section
         ref={containerRef}
-        className={`w-full ${
-          isDesktop ? "h-screen" : "py-10"
-        } text-white`}
+        className={`w-full ${isDesktop ? "h-screen" : "py-10"} text-white`}
       >
         <div
           className={`slider-content flex ${
             isDesktop ? "flex-row" : "flex-row overflow-x-auto no-scrollbar"
           } ${isDesktop ? "gap-6 md:gap-8 h-full px-4 md:px-8 items-center" : "gap-6 px-6"}`}
         >
-          {testimonials.map((t, i) => (
+          {images.map((image, i) => (
             <div
               key={i}
-              className="border-2 border-white p-4 md:p-6 w-[280px] sm:w-[300px] md:w-[340px] lg:w-[360px] h-[400px] md:h-[450px] flex-shrink-0 flex flex-col items-center justify-start text-center rounded-[50%/35%]"
+              className="border-2 border-white p-4 md:p-6 w-[280px] sm:w-[300px] md:w-[340px] lg:w-[360px] h-[400px] md:h-[450px] flex-shrink-0 flex items-center justify-center "
             >
               <img
-                src={t.image}
-                alt={t.name}
-                className="h-[140px] w-[140px] md:h-[180px] md:w-[150px] rounded-full mb-4 object-cover"
+                src={image}
+                alt={`Client ${i + 1}`}
+                className=" object-cover"
               />
-              <p className="text-sm md:text-base italic mb-4 px-2">
-                "{t.quote}"
-              </p>
-              <h3 className="text-base md:text-lg font-semibold uppercase tracking-wide">
-                {t.name}
-              </h3>
-              <p className="text-gray-400 text-xs md:text-sm">{t.title}</p>
             </div>
           ))}
         </div>

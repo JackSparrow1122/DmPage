@@ -50,7 +50,7 @@ export default function WaveCircle() {
             });
           }
 
-          // Show final content
+          // Final content show
           if (self.progress > 0.95) {
             setShowContent(true);
           } else {
@@ -80,8 +80,7 @@ export default function WaveCircle() {
     tl.to(container, { background: "#01224F", ease: "power1.out" }, 0.5);
     tl.to(circle, {
       background: "#01224F",
-      borderBottom: "white",
-      boxShadow: "0 11px 9px -6px white",
+      boxShadow: "0 20px 15px -6px white",
       ease: "power1.out",
     }, 0.5);
 
@@ -96,6 +95,29 @@ export default function WaveCircle() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+
+  // 🌍 Rotation effect
+  useEffect(() => {
+    const circle = circleRef.current;
+    let rotationTween;
+
+    if (scrollProgress > 0.25) {
+      rotationTween = gsap.to(circle, {
+        rotation: 360,
+        duration: 3,
+        ease: "linear",
+        repeat: -1,
+        transformOrigin: "50% 50%",
+      });
+    } else {
+      gsap.killTweensOf(circle, "rotation");
+      gsap.set(circle, { rotation: 0 });
+    }
+
+    return () => {
+      if (rotationTween) rotationTween.kill();
+    };
+  }, [scrollProgress]);
 
   useEffect(() => {
     const content = contentRef.current;
@@ -148,13 +170,13 @@ export default function WaveCircle() {
           </h2>
 
           <div className="relative h-[100px] mt-4 flex items-center justify-center text-white">
-            <p ref={para1Ref} className="absolute text-lg sm:text-xl md:text-4xl font-bold">
+            <p ref={para1Ref} className="absolute text-lg sm:text-xl md:text-5xl font-bold">
               Want visibility?
             </p>
-            <p ref={para2Ref} className="absolute text-lg sm:text-xl md:text-4xl font-bold">
+            <p ref={para2Ref} className="absolute text-lg sm:text-xl md:text-5xl font-bold">
               The kind that actually drives engagement?
             </p>
-            <p ref={para3Ref} className="absolute text-lg sm:text-xl md:text-4xl font-bold">
+            <p ref={para3Ref} className="absolute text-lg sm:text-xl md:text-5xl font-bold">
               Need it for events, admissions, or brand presence?
             </p>
           </div>
@@ -188,7 +210,7 @@ export default function WaveCircle() {
       <div className="absolute top-0 left-0 w-full">
         <svg className="w-full h-24" viewBox="0 0 1440 320" preserveAspectRatio="none">
           <path
-            fill="#F6F6F6"
+            fill="black"
             d="M0,160L40,149.3C80,139,160,117,240,112C320,107,400,117,480,149.3C560,181,640,235,720,245.3C800,256,880,224,960,186.7C1040,149,1120,107,1200,90.7C1280,75,1360,85,1400,90.7L1440,96L1440,0L0,0Z"
           >
             <animate
