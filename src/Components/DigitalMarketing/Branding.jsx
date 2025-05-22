@@ -131,7 +131,7 @@ const ImageSliderComponent = () => {
         </div>
 
         {/* Right Section - Sliders */}
-        <div className="w-full lg:w-[45%] h-[500px] rounded-tr-[180px] flex gap-4 overflow-hidden relative">
+        <div className="w-full lg:w-[50%] h-[500px] rounded-tr-[180px] flex gap-4 overflow-hidden relative">
           <VerticalSlider />
           <VerticalSlider reverse />
           <VerticalSlider />

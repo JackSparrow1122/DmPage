@@ -11,7 +11,6 @@ import WhyChoose2 from './DigitalMarketing/WhyChoose2'
 import About from '../Components/DigitalMarketing/About'
 import ProgressBar from '../Components/DigitalMarketing/ProgressBar'
 import ImageGrid from '../Components/DigitalMarketing/ImgGride'
-import ScrollShowcase from '../Components/DigitalMarketing/ScrollShowcase'
 const DigitalMark = () => { 
 
   return (
@@ -19,15 +18,15 @@ const DigitalMark = () => {
     <Tagline />
     <Circle />
     <ImageGrid/>
+     <ProgressBar/>
     <Services />
-    <ScrollShowcase/>
     <Branding />
     <Testimonials />
     <Event />
     <WhyChoose2/>
      <About />
     <WhyChoose/>
-    {/* <ProgressBar/> */}
+   
     
     </div>
   )
