@@ -10,7 +10,7 @@ import {
   FaShieldAlt,
   FaUsers
 } from 'react-icons/fa';
-import yourImage from '../../assets/GA_logo.png';
+import yourImage from '../../assets/DM Vector 6.png';
 
 const steps = [
   { title: 'Rapid Experimentation', points: ['Industry hypothesis repository', 'AI-driven performance testing'], icon: <FaSearch size={40} /> },
@@ -28,68 +28,76 @@ export default function ScrollSyncDiagram() {
   const stepRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const container = rightRef.current;
-      if (!container) return;
-
-      const containerTop = container.getBoundingClientRect().top;
-      const containerHeight = container.clientHeight;
-      const centerY = containerTop + containerHeight / 2;
-
-      let closestIndex = 0;
-      let closestDistance = Infinity;
-
-      stepRefs.current.forEach((ref, index) => {
-        if (ref) {
-          const rect = ref.getBoundingClientRect();
-          const elementCenterY = rect.top + rect.height / 2;
-          const distance = Math.abs(centerY - elementCenterY);
-
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-          }
-        }
-      });
-
-      setActiveIndex(closestIndex);
-    };
-
+  const handleScroll = () => {
     const container = rightRef.current;
     if (!container) return;
 
-    container.addEventListener('scroll', handleScroll);
+    const containerTop = container.getBoundingClientRect().top;
+    const containerHeight = container.clientHeight;
+    const centerY = containerTop + containerHeight / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    stepRefs.current.forEach((ref, index) => {
+      if (ref) {
+        const rect = ref.getBoundingClientRect();
+        const elementCenterY = rect.top + rect.height / 2;
+        const distance = Math.abs(centerY - elementCenterY);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      }
+    });
+
+    setActiveIndex(closestIndex);
+  };
+
+  useEffect(() => {
+    const container = rightRef.current;
+    if (!container) return;
+
+    const onScroll = () => {
+      if (container.scrollTop <= 0) {
+        console.log('Scrolled above first step - navigate to previous component');
+      }
+
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (container.scrollTop >= maxScroll) {
+        console.log('Scrolled below last step - navigate to next component');
+      }
+
+      handleScroll();
+    };
+
+    container.addEventListener('scroll', onScroll);
     handleScroll();
 
     return () => {
-      container.removeEventListener('scroll', handleScroll);
+      container.removeEventListener('scroll', onScroll);
     };
   }, []);
 
-  // Updated onLeftWheel: Left side scroll controls right side container scroll, no independent scroll on left
   const onLeftWheel = (e) => {
-    e.preventDefault(); // Prevent default left scroll behavior
-
+    e.preventDefault();
     if (!rightRef.current) return;
 
-    const container = rightRef.current;
-    const scrollTop = container.scrollTop;
-    const scrollHeight = container.scrollHeight;
-    const clientHeight = container.clientHeight;
+    rightRef.current.scrollBy({
+      top: e.deltaY,
+      behavior: 'smooth'
+    });
 
-    // Calculate new scrollTop with boundaries
-    let newScrollTop = scrollTop + e.deltaY;
-    if (newScrollTop < 0) newScrollTop = 0;
-    if (newScrollTop > scrollHeight - clientHeight) newScrollTop = scrollHeight - clientHeight;
-
-    container.scrollTo({ top: newScrollTop });
+    setTimeout(handleScroll, 100);
   };
 
+  // Updated: increased offset from 40 to 60 for icons to be further out
   const getCirclePosition = (index, total, radius) => {
     const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
-    const x = (radius + 40) * Math.cos(angle);
-    const y = (radius + 40) * Math.sin(angle);
+    const offset = 35; // previously 40, increased for more distance
+    const x = (radius + offset) * Math.cos(angle);
+    const y = (radius + offset) * Math.sin(angle);
     return { x, y };
   };
 
@@ -103,27 +111,25 @@ export default function ScrollSyncDiagram() {
   };
 
   return (
-    <div className="px-4 md:px-16 min-h-screen ">
-      {/* Heading Section */}
+    <div className="px-4 md:px-16 min-h-screen">
       <div className="text-center">
-        <h1 className="text-5xl font-extrabold text-yellow-500 mb-4">Our Unique Process</h1>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-yellow-500">Our Unique Process</h1>
+        <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto">
           Explore the key steps that power our data-driven marketing strategy for rapid success.
         </p>
       </div>
 
-      {/* Main diagram container */}
-      <div className="relative flex flex-col md:flex-row">
-        {/* Left Circular Icons */}
+      <div className="relative flex flex-col md:flex-row ">
+        {/* Left Circular Diagram */}
         <div
           onWheel={onLeftWheel}
-          className="w-full md:w-1/2 h-[400px] md:h-screen flex items-center justify-center relative cursor-pointer"
+          className="w-full md:w-1/2 h-[500px] md:h-screen flex items-center justify-center relative cursor-pointer "
         >
-          <div className="relative w-[300px] h-[300px] rounded-full flex items-center justify-center">
+          <div className="relative w-[300px] h-[300px] md:w-[360px] md:h-[360px]  flex items-center justify-center  ">
             <img
               src={yourImage}
               alt="Center"
-              className="rounded-full w-[300px] h-[300px] object-cover z-20"
+              className=" w-full h-full object-cover z-20 "
             />
             {steps.map((step, index) => {
               const { x, y } = getCirclePosition(index, steps.length, 150);
@@ -132,7 +138,7 @@ export default function ScrollSyncDiagram() {
                 <button
                   key={index}
                   onClick={() => scrollToStep(index)}
-                  className={`absolute flex items-center justify-center rounded-full p-3 border-2 transition-all duration-300 cursor-pointer ${
+                  className={` absolute flex items-center justify-center rounded-full p-3 md:p-4 border-2 transition-all duration-300 cursor-pointer ${
                     isActive
                       ? 'bg-[#f2b800] border-white text-white scale-110 z-30'
                       : 'bg-gray-100 border-gray-300 text-gray-400 opacity-60 z-10'
@@ -141,28 +147,25 @@ export default function ScrollSyncDiagram() {
                     top: '50%',
                     left: '50%',
                     transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
-                    width: 64,
-                    height: 64
+                    width: 70,
+                    height: 70
                   }}
                 >
-                  <div className="text-[30px]">{step.icon}</div>
+                  <div className=" text-2xl md:text-[36px]">{step.icon}</div>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Right Scrollable Content */}
+        {/* Right Scrollable Steps */}
         <div className="w-full md:w-1/2 h-[500px] md:h-screen relative overflow-hidden">
-          {/* Center Dot */}
-          <div className="absolute top-1/2 left-3 transform -translate-y-1/2 w-5 h-5 rounded-full border-4 border-yellow-500 bg-white z-30" />
-          {/* Vertical Line */}
-          <div className="absolute top-0 bottom-0 left-[21px] w-1 bg-[#f2b800] z-10" />
-          {/* Gradient Fades */}
+          <div className="absolute top-1/2 left-3 transform -translate-y-1/2 w-3 h-3 md:w-5 md:h-5 rounded-full border-2 md:border-4 border-yellow-500 bg-white z-30" />
+          <div className="absolute top-0 bottom-0 left-[17px] md:left-[21px] w-[2px] md:w-1 bg-[#f2b800] z-10" />
 
           <div
             ref={rightRef}
-            className="h-full overflow-y-scroll pr-8 relative z-20 scroll-smooth"
+            className="h-full overflow-y-scroll pr-4 md:pr-8 relative z-20 scroll-smooth"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -170,17 +173,22 @@ export default function ScrollSyncDiagram() {
             }}
           >
             <style>{`div::-webkit-scrollbar { display: none; }`}</style>
-            <div className="pt-[40vh] pb-[40vh] space-y-24">
+
+            <div
+              className="space-y-16 md:space-y-24"
+              style={{
+                paddingTop: 'calc(50vh - 64px)',
+                paddingBottom: 'calc(50vh - 64px)'
+              }}
+            >
               {steps.map((step, index) => {
                 const isActive = index === activeIndex;
                 return (
                   <div
                     key={index}
                     ref={(el) => (stepRefs.current[index] = el)}
-                    className="flex items-start relative pl-24 pr-6"
-                    style={{
-                      scrollSnapAlign: 'start'
-                    }}
+                    className="flex items-center relative pl-10 md:pl-20"
+                    style={{ scrollSnapAlign: 'center' }}
                   >
                     <motion.div
                       initial={false}
@@ -189,10 +197,10 @@ export default function ScrollSyncDiagram() {
                         filter: isActive ? 'blur(0px)' : 'blur(3px)'
                       }}
                       transition={{ duration: 0.3 }}
-                      className="max-w-[calc(100%-70px)]"
+                      className="max-w-[calc(100%-40px)] md:max-w-[calc(100%-70px)]"
                     >
-                      <h3 className="text-3xl font-bold text-[#f2b800]">{step.title}</h3>
-                      <ul className="list-disc list-inside text-2xl text-white mt-2 space-y-1">
+                      <h3 className="text-xl md:text-3xl font-bold text-[#f2b800]">{step.title}</h3>
+                      <ul className="list-disc list-inside text-base md:text-2xl text-white mt-2 space-y-1">
                         {step.points.map((point, i) => (
                           <li key={i}>{point}</li>
                         ))}

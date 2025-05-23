@@ -138,7 +138,7 @@ export default function WaveCircle() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[110vh] overflow-hidden bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+      className="relative h-[110vh] overflow-hidden bg-gradient-to-r from-[#26dde5] via-[#00aae1] to-[#0088E8]"
     >
       <div className="h-screen flex items-center justify-center relative text-center">
         {/* Intro Content */}
@@ -156,7 +156,7 @@ export default function WaveCircle() {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: "linear-gradient(90deg, #a78bfa, #ec4899, #ef4444)",
+                background: "linear-gradient(90deg, #0088E8, #00aae1, #26dde5)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
@@ -187,7 +187,7 @@ export default function WaveCircle() {
           <div
             ref={contentRef}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 
+                      bg-gradient-to-r from-[#26dde5] via-[#00aae1] to-[#0088E8] 
                       bg-clip-text text-transparent z-10 px-2 max-w-screen-md text-center"
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
@@ -202,7 +202,7 @@ export default function WaveCircle() {
         {/* Circle */}
         <div
           ref={circleRef}
-          className="rounded-full shadow-lg bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 w-[20rem] h-[20rem] sm:w-[30rem] sm:h-[30rem] md:w-[30rem] md:h-[30rem] xl:w-[80rem] xl:h-[80rem]"
+          className="rounded-full shadow-lg bg-gradient-to-r from-[#0088E8] via-[#00aae1] to-[#26dde5] w-[20rem] h-[20rem] sm:w-[30rem] sm:h-[30rem] md:w-[40rem] md:h-[30rem] xl:w-[80rem] xl:h-[110rem]"
         />
       </div>
 
