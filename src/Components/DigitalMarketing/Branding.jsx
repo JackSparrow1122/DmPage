@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Direct URLs of images
-const cards = [
-  "/public/img1.JPG",
-  "/public/img2.JPG",
-  "/public/img3.JPG",
-  "/public/img4.JPG",
-  "/public/img5.JPG",
-  "/public/img6.JPG",
-  "/public/img7.JPG",
-  "/public/img8.JPG",
-  "/public/img9.JPG",
-  "/public/img10.jpg",
-  "/public/img11.jpg",
-  "/public/img12.jpg",
-];
+// Import images for the cards
+import img1 from  "/public/img1.JPG";
+import img2 from  "/public/img2.JPG";
+import img3 from  "/public/img3.JPG";
+import img4 from  "/public/img4.JPG";
+import img5 from  "/public/img12.JPG";  
+import img6 from  "/public/img5.JPG";
+import img7 from  "/public/img6.JPG";
+import img8 from  "/public/img7.JPG";
+import img9 from  "/public/img8.JPG";
+import img10 from "/public/img9.JPG";
+import img11 from "/public/img10.JPG";
+import img12 from "/public/img11.JPG";
 
-// Direct URL for the GIF
-const synergyGif = "https://yourdomain.com/assets/plain.gif";
+// Import synergy GIF (top left)
+import synergyGif from "/public/plain.gif";
+
+const cards = [
+  img1, img2, img3, img4,
+  img5, img6, img7, img8,
+  img9, img10, img11, img12,
+];
 
 const sliceSize = cards.length / 3;
 
