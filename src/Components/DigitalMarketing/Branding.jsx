@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Import images for the cards
-import img1 from  "/img1.jpg";
-import img2 from  "/img2.jpg";
-import img3 from  "/img3.jpg";
-import img4 from  "/img4.jpg";
-import img5 from  "/img12.jpg";  
-import img6 from  "/img5.jpg";
-import img7 from  "/img6.jpg";
-import img8 from  "/img7.jpg";
-import img9 from  "/img8.jpg";
-import img10 from "/img9.jpg";
-import img11 from "/img10.jpg";
-import img12 from "/img11.jpg";
-
-// Import synergy GIF (top left)
-import synergyGif from "/public/plain.gif";
+// Since images are in the public folder, do NOT import them.
+// Use direct string paths instead:
 
 const cards = [
-  img1, img2, img3, img4,
-  img5, img6, img7, img8,
-  img9, img10, img11, img12,
+  "/img1.jpg",
+  "/img2.jpg",
+  "/img3.jpg",
+  "/img4.jpg",
+  "/img12.jpg",
+  "/img5.jpg",
+  "/img6.jpg",
+  "/img7.jpg",
+  "/img8.jpg",
+  "/img9.jpg",
+  "/img10.jpg",
+  "/img11.jpg",
 ];
+
+const synergyGif = "/plain.gif"; // also from public folder
 
 const sliceSize = cards.length / 3;
 
