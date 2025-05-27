@@ -1,28 +1,24 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Import images for the cards
-import img1 from "../../assets/img12.jpg";
-import img2 from "../../assets/img1.JPG";
-import img3 from "../../assets/img2.JPG";
-import img4 from "../../assets/img3.JPG";
-import img5 from "../../assets/img4.JPG";  
-import img6 from "../../assets/img5.JPG";
-import img7 from "../../assets/img6.JPG";
-import img8 from "../../assets/img7.JPG";
-import img9 from "../../assets/img8.JPG";
-import img10 from "../../assets/img9.JPG";
-import img11 from "../../assets/img10.JPG";
-import img12 from "../../assets/img11.JPG";
-
-// Import synergy GIF (top left)
-import synergyGif from "../../assets/plain.gif";
-
+// Direct URLs of images
 const cards = [
-  img1, img2, img3, img4,
-  img5, img6, img7, img8,
-  img9, img10, img11, img12,
+  "/src/assets/img1.JPG",
+  "/src/assets/img2.JPG",
+  "/src/assets/img3.JPG",
+  "/src/assets/img4.JPG",
+  "/src/assets/img5.JPG",
+  "/src/assets/img6.JPG",
+  "/src/assets/img7.JPG",
+  "/src/assets/img8.JPG",
+  "/src/assets/img9.JPG",
+  "/src/assets/img10.jpg",
+  "/src/assets/img11.jpg",
+  "/src/assets/img12.jpg",
 ];
+
+// Direct URL for the GIF
+const synergyGif = "https://yourdomain.com/assets/plain.gif";
 
 const sliceSize = cards.length / 3;
 
