@@ -21,7 +21,7 @@ const DigitalMark = () => {
      <ProgressBar/>
     <Services />
     <Branding />
-    <Testimonials />
+    {/* <Testimonials /> */}
     <Event />
     <WhyChoose2/>
      <About />

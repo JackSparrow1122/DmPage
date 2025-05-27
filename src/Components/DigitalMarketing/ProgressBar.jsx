@@ -92,22 +92,27 @@ export default function ScrollSyncDiagram() {
     setTimeout(handleScroll, 100);
   };
 
-  // Updated: increased offset from 40 to 60 for icons to be further out
   const getCirclePosition = (index, total, radius) => {
     const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
-    const offset = 35; // previously 40, increased for more distance
+    const offset = 35;
     const x = (radius + offset) * Math.cos(angle);
     const y = (radius + offset) * Math.sin(angle);
     return { x, y };
   };
 
+  // HERE is the important part updated for instant active state change on click
   const scrollToStep = (index) => {
-    const ref = stepRefs.current[index];
+    if (!rightRef.current || !stepRefs.current[index]) return;
+
     const container = rightRef.current;
-    if (ref && container) {
-      const top = ref.offsetTop - container.clientHeight / 2 + ref.clientHeight / 2;
-      container.scrollTo({ top, behavior: 'smooth' });
-    }
+    const element = stepRefs.current[index];
+
+    const scrollTop = element.offsetTop - container.clientHeight / 2 + element.clientHeight / 2;
+
+    setActiveIndex(index); // Turant update karo activeIndex
+
+    // Scroll instantly without smooth animation to prevent delay
+    container.scrollTo({ top: scrollTop, behavior: 'auto' });
   };
 
   return (

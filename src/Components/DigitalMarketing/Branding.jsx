@@ -1,69 +1,78 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "/public/ga-logo.png";
+
+// Import images for the cards
+import img1 from "../../assets/1.jpg";
+import img2 from "../../assets/2.jpg";
+import img3 from "../../assets/3.jpg";
+import img4 from "../../assets/4.jpg";
+import img5 from "../../assets/5.jpg";  
+import img6 from "../../assets/6.jpg";
+import img7 from "../../assets/7.jpg";
+import img8 from "../../assets/8.jpg";
+import img9 from "../../assets/9.jpg";
+import img10 from "../../assets/10.jpg";
+import img11 from "../../assets/11.jpg";
+import img12 from "../../assets/12.jpg";
+
+// Import synergy GIF (top left)
 import synergyGif from "../../assets/plain.gif";
 
 const cards = [
-  {
-    title: "Admission Campaigns",
-    content: "Attract and convert students through tailored digital strategies for colleges.",
-  },
-  {
-    title: "Branding for Institutions",
-    content: "Create a memorable identity that resonates with students and stakeholders.",
-  },
-  {
-    title: "Event Management",
-    content: "From celebrity events to Synergy Sphere experiences — we craft unforgettable moments for colleges and corporates.",
-  },
-  {
-    title: "Admission Campaigns",
-    content: "Attract and convert students through tailored digital strategies for colleges.",
-  },
-  {
-    title: "Branding for Institutions",
-    content: "Create a memorable identity that resonates with students and stakeholders.",
-  },
-  {
-    title: "Event Management",
-    content: "From celebrity events to Synergy Sphere experiences — we craft unforgettable moments for colleges and corporates.",
-  },
-  { gryphon: true },
+  img1, img2, img3, img4,
+  img5, img6, img7, img8,
+  img9, img10, img11, img12,
 ];
 
-const VerticalSlider = ({ reverse = false }) => {
-  const repeatedCards = [...cards, ...cards, ...cards, ...cards, ...cards];
+const sliceSize = cards.length / 3;
+
+const firstSlice = cards.slice(0, sliceSize);
+const secondSlice = cards.slice(sliceSize, sliceSize * 2);
+const thirdSlice = cards.slice(sliceSize * 2);
+
+const VerticalSlider = ({ cardsSlice, reverse = false }) => {
+  const repeatedCards = [...cardsSlice, ...cardsSlice, ...cardsSlice];
 
   return (
-<div className="w-1/3 h-full relative" style={{ transform: "rotate(20deg)" }}>
-      <motion.div
-        className="absolute top-0 left-0 flex flex-col items-center gap-6"
-        animate={{ y: reverse ? ["0%", "-100%"] : ["-100%", "0%"] }}
-        transition={{ duration: 60, ease: "linear", repeat: Infinity }}
+    <div className="w-1/3 h-full relative" style={{ transform: "rotate(20deg)" }}>
+      <style>
+        {`
+          @keyframes infiniteScrollUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+          }
+          @keyframes infiniteScrollDown {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
+          }
+          .infinite-scroll-up {
+            animation: infiniteScrollUp 20s linear infinite;
+          }
+          .infinite-scroll-down {
+            animation: infiniteScrollDown 20s linear infinite;
+          }
+        `}
+      </style>
+      <div
+        className={`absolute top-0 left-0 flex flex-col items-center gap-4 sm:gap-6 ${
+          reverse ? "infinite-scroll-down" : "infinite-scroll-up"
+        }`}
+        style={{ willChange: "transform" }}
       >
-        {repeatedCards.map((card, idx) => (
+        {repeatedCards.map((image, idx) => (
           <div
             key={idx}
-            className="w-[150px] h-[260px] rounded-xl shadow-md flex flex-col items-center justify-center text-center px-4 py-6 bg-white text-black"
+            className="w-[120px] h-[180px] sm:w-[120px] sm:h-[200px] md:w-[140px] md:h-[240px] lg:w-[170px] lg:h-[260px] rounded-xl shadow-md overflow-hidden"
           >
-            {card.gryphon ? (
-              <>
-                <span className="font-bold text-lg mb-2">Gryphon Academy</span>
-                <img
-                  src={logo}
-                  alt="Gryphon Academy Logo"
-                  className="w-60 h-60 object-contain mt-2"
-                />
-              </>
-            ) : (
-              <>
-                <span className="font-semibold text-base mb-2">{card.title}</span>
-                <p className="text-sm">{card.content}</p>
-              </>
-            )}
+            <img
+              src={image}
+              alt={`slider-img-${idx}`}
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
@@ -72,18 +81,18 @@ const ImageSliderComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="relative px-4 sm:px-8 md:px-12 lg:px-16">
+    <div className="relative px-4 sm:px-6 md:px-10 lg:px-16 py-10">
       {/* Toggle Button */}
       <div
-        className="absolute top-6 right-6 sm:right-12 z-50 cursor-pointer"
+        className="absolute top-6 right-4 sm:right-8 md:right-10 z-50 cursor-pointer"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         <div
-          className={`w-14 h-14 rounded-full border flex items-center justify-center ${
+          className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border flex items-center justify-center ${
             menuOpen ? "border-black bg-white" : "border-white"
           }`}
         >
-          <span className={`text-6xl ${menuOpen ? "text-black" : "text-white"}`}>
+          <span className={`text-4xl sm:text-5xl ${menuOpen ? "text-black" : "text-white"}`}>
             {menuOpen ? "×" : "="}
           </span>
         </div>
@@ -96,7 +105,7 @@ const ImageSliderComponent = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-5 right-6 sm:right-11 bg-white text-black shadow-xl rounded-lg p-6 z-30 w-64"
+            className="absolute top-20 right-4 sm:right-8 md:right-10 bg-white text-black shadow-xl rounded-lg p-6 z-30 w-64"
           >
             <h3 className="text-xl font-bold mb-4 pr-8">Branding Insights</h3>
             <p className="text-sm mb-2">🎨 Craft a unique visual identity that sets you apart.</p>
@@ -108,36 +117,37 @@ const ImageSliderComponent = () => {
       </AnimatePresence>
 
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-        {/* Left Section - No BG */}
-        <div className="w-full lg:w-1/2 p-2 sm:p-4 flex flex-col justify-start h-full">
-          {/* GIF at Top */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+        {/* Left Section */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-start h-full">
+          {/* GIF */}
           <div className="mb-6">
             <img
               src={synergyGif}
               alt="Synergy in motion"
-              className="w-[120px] h-auto "
+              className="w-[80px] sm:w-[100px] lg:w-[120px] h-auto"
+              draggable={false}
             />
           </div>
 
           <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 text-white leading-tight">
               Crafting Moments. <span className="text-[#F2B800]">Creating Impact.</span> Capturing Results.
             </h2>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-white">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white">
               Snapshots of Synergy – Where both Colleges & Corporates Find Common Ground
             </p>
           </div>
         </div>
 
-        {/* Right Section - Sliders */}
-        <div className="w-full lg:w-[50%] h-[500px] rounded-tr-[180px] flex gap-4 overflow-hidden relative">
-          <VerticalSlider />
-          <VerticalSlider reverse />
-          <VerticalSlider />
+        {/* Right Section */}
+        <div className="w-full lg:w-[50%] h-[400px] sm:h-[450px] md:h-[500px] rounded-tr-[100px] sm:rounded-tr-[140px] lg:rounded-tr-[180px] flex gap-2 sm:gap-4 overflow-hidden relative">
+          <VerticalSlider cardsSlice={firstSlice} />
+          <VerticalSlider cardsSlice={secondSlice} reverse />
+          <VerticalSlider cardsSlice={thirdSlice} />
         </div>
       </div>
-</div>
+    </div>
   );
 };
 

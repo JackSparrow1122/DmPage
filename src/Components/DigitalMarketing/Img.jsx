@@ -156,7 +156,7 @@ export default function WaveCircle() {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: "linear-gradient(90deg, #0088E8, #00aae1, #26dde5)",
+                background: "linear-gradient(90deg, #26dde5, #00aae1, #0088E8)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
@@ -202,7 +202,7 @@ export default function WaveCircle() {
         {/* Circle */}
         <div
           ref={circleRef}
-          className="rounded-full shadow-lg bg-gradient-to-r from-[#0088E8] via-[#00aae1] to-[#26dde5] w-[20rem] h-[20rem] sm:w-[30rem] sm:h-[30rem] md:w-[40rem] md:h-[30rem] xl:w-[80rem] xl:h-[110rem]"
+          className="rounded-full shadow-lg bg-gradient-to-r from-[#26dde5] via-[#00aae1] to-[#0088E8] w-[20rem] h-[20rem] sm:w-[30rem] sm:h-[30rem] md:w-[30rem] md:h-[30rem] xl:w-[80rem] xl:h-[80rem]"
         />
       </div>
 

@@ -76,7 +76,7 @@ const ServiceCard = ({ index, title, desc, image, isActive, onActivate }) => {
       <div className="flex items-center gap-4 z-10 mb-3 sm:mb-0">
         <div
           className={`rounded-md px-5 py-3 text-lg sm:text-2xl font-bold transition-colors duration-300 select-none
-          ${isActive ? 'bg-black text-white' :'bg-gray-200 text-gray-600 group-hover:bg-black group-hover:text-white'}`}
+          ${isActive ? 'bg-black text-white' :'bg-gray-200 text-gray-600 group-hover:bg-[#224E87] group-hover:text-white'}`}
         >
           {String(index + 1).padStart(2, '0')}.
         </div>
@@ -97,7 +97,7 @@ const ServiceCard = ({ index, title, desc, image, isActive, onActivate }) => {
         ref={imageRef}
         src={image}
         alt="hover-img"
-        className="absolute -top-6 right-6 w-60 h-auto pointer-events-none drop-shadow3xl z-0"
+        className="absolute  right-6 w-80 h-auto pointer-events-none drop-shadow3xl z-0"
       />
     </div>
   );
