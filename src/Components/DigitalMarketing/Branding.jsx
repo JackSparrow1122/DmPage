@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Direct URLs of images
 const cards = [
-  "/src/assets/img1.JPG",
-  "/src/assets/img2.JPG",
-  "/src/assets/img3.JPG",
-  "/src/assets/img4.JPG",
-  "/src/assets/img5.JPG",
-  "/src/assets/img6.JPG",
-  "/src/assets/img7.JPG",
-  "/src/assets/img8.JPG",
-  "/src/assets/img9.JPG",
-  "/src/assets/img10.jpg",
-  "/src/assets/img11.jpg",
-  "/src/assets/img12.jpg",
+  "/public/img1.JPG",
+  "/public/img2.JPG",
+  "/public/img3.JPG",
+  "/public/img4.JPG",
+  "/public/img5.JPG",
+  "/public/img6.JPG",
+  "/public/img7.JPG",
+  "/public/img8.JPG",
+  "/public/img9.JPG",
+  "/public/img10.jpg",
+  "/public/img11.jpg",
+  "/public/img12.jpg",
 ];
 
 // Direct URL for the GIF
