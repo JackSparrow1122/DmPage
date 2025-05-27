@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Import images for the cards
-import img1 from  "/public/img1.JPG";
-import img2 from  "/public/img2.JPG";
-import img3 from  "/public/img3.JPG";
-import img4 from  "/public/img4.JPG";
-import img5 from  "/public/img12.JPG";  
-import img6 from  "/public/img5.JPG";
-import img7 from  "/public/img6.JPG";
-import img8 from  "/public/img7.JPG";
-import img9 from  "/public/img8.JPG";
-import img10 from "/public/img9.JPG";
-import img11 from "/public/img10.JPG";
-import img12 from "/public/img11.JPG";
+import img1 from  "/public/img1.jpg";
+import img2 from  "/public/img2.jpg";
+import img3 from  "/public/img3.jpg";
+import img4 from  "/public/img4.jpg";
+import img5 from  "/public/img12.jpg";  
+import img6 from  "/public/img5.jpg";
+import img7 from  "/public/img6.jpg";
+import img8 from  "/public/img7.jpg";
+import img9 from  "/public/img8.jpg";
+import img10 from "/public/img9.jpg";
+import img11 from "/public/img10.jpg";
+import img12 from "/public/img11.jpg";
 
 // Import synergy GIF (top left)
 import synergyGif from "/public/plain.gif";
