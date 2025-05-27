@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Import images for the cards
-import img1 from "../../assets/1.jpg";
+// import img1 from "../../assets/1.jpg";
 import img2 from "../../assets/2.jpg";
 import img3 from "../../assets/3.jpg";
 import img4 from "../../assets/4.jpg";
@@ -19,7 +19,7 @@ import img12 from "../../assets/12.jpg";
 import synergyGif from "../../assets/plain.gif";
 
 const cards = [
-  img1, img2, img3, img4,
+   img2, img3, img4,
   img5, img6, img7, img8,
   img9, img10, img11, img12,
 ];
