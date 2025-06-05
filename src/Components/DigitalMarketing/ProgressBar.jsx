@@ -1,27 +1,61 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaSearch,
-  FaTools,
-  FaDatabase,
-  FaChartLine,
-  FaCogs,
-  FaRocket,
-  FaShieldAlt,
-  FaUsers
+  FaBullseye,       // 🎯 Objective
+  FaChartBar,       // 📊 Data-Led
+  FaPenNib,         // ✍️ Creative
+  FaCrosshairs,     // 🎯 Precision Targeting
+  FaSyncAlt,        // 🔄 Agility
+  FaComments,       // 💬 Communication
+  FaFlagCheckered,  // 🏁 Outcome
+  FaAd              // 📱 Platform Execution
 } from 'react-icons/fa';
+
 import yourImage from '../../assets/DM Vector 6.png';
 
 const steps = [
-  { title: 'Rapid Experimentation', points: ['Industry hypothesis repository', 'AI-driven performance testing'], icon: <FaSearch size={40} /> },
-  { title: 'Creative Optimization', points: ['Test and learn', 'Improve messaging'], icon: <FaTools size={40} /> },
-  { title: 'Data Intelligence', points: ['Data engineering', 'Centralized dashboards'], icon: <FaDatabase size={40} /> },
-  { title: 'Performance Analytics', points: ['KPI tracking', 'Attribution modeling'], icon: <FaChartLine size={40} /> },
-  { title: 'Marketing Automation', points: ['CRM integration', 'Workflow automation'], icon: <FaCogs size={40} /> },
-  { title: 'Fast Deployment', points: ['Rapid releases', 'CI/CD pipelines'], icon: <FaRocket size={40} /> },
-  { title: 'Security Focus', points: ['Data encryption', 'Access controls'], icon: <FaShieldAlt size={40} /> },
-  { title: 'Customer Engagement', points: ['User feedback', 'Community building'], icon: <FaUsers size={40} /> }
+  {
+    title: 'Objective First',
+    points: ['Whether it’s admissions or brand recall, we begin with your intent.'],
+    icon: <FaBullseye size={40} />
+  },
+  {
+    title: 'Data-Led Thinking',
+    points: ['Our campaigns are built on insights, not assumptions.'],
+    icon: <FaChartBar size={40} />
+  },
+  {
+    title: 'Creative That Sticks',
+    points: ['Visuals, words, and hooks tailored to your audience.'],
+    icon: <FaPenNib size={40} />
+  },
+  {
+    title: 'Precision Targeting',
+    points: ['Every click, every impression—strategically placed.'],
+    icon: <FaCrosshairs size={40} />
+  },
+  {
+    title: 'Agility in Action',
+    points: ['We monitor, tweak, and optimize as we go.'],
+    icon: <FaSyncAlt size={40} />
+  },
+  {
+    title: 'You’re in The Loop',
+    points: ['Transparent reporting and collaborative decisions.'],
+    icon: <FaComments size={40} />
+  },
+  {
+    title: 'Outcome-Driven Thinking',
+    points: ['From awareness to conversion, we don’t lose sight of your end goal.'],
+    icon: <FaFlagCheckered size={40} />
+  },
+  {
+    title: 'Platform-Perfect Execution',
+    points: ['From Instagram reels to LinkedIn ads, we tailor each asset for the right platform and audience.'],
+    icon: <FaAd size={40} />
+  }
 ];
+
 
 export default function ScrollSyncDiagram() {
   const rightRef = useRef(null);
@@ -118,10 +152,7 @@ export default function ScrollSyncDiagram() {
   return (
     <div className="px-4 md:px-16 min-h-screen">
       <div className="text-center">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-yellow-500">Our Unique Process</h1>
-        <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto">
-          Explore the key steps that power our data-driven marketing strategy for rapid success.
-        </p>
+        <h1 className="text-3xl md:text-5xl font-extrabold text-yellow-500">Not One-Size-Fits-All. <br /> <span className='text-white text-3xl'>Our Approach Evolves with Your Goals.</span> </h1>
       </div>
 
       <div className="relative flex flex-col md:flex-row ">

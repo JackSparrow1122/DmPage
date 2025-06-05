@@ -72,7 +72,7 @@ const CustomGrid = () => {
       </style>
 
       <div className="pt-20 bg-black">
-        <h2 className="text-white text-3xl font-bold px-4 select-none">Scale faster With</h2>
+        <h2 className="text-[#EAB308] text-3xl md:text-4xl font-bold px-4 select-none">Scale Faster with Industry-Led Growth Marketing </h2>
       </div>
 
       <div
@@ -97,8 +97,10 @@ const CustomGrid = () => {
               transformOrigin: 'left center',
             }}
           >
-            <h2 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold mb-2 select-none">MarTech</h2>
-            <div className="flex-1 overflow-hidden ">
+            <div className="flex-1 overflow-hidden">
+              <h2 className="text-white font-bold mb-2 select-none text-[clamp(1.2rem,2vw,3rem)] whitespace-nowrap">
+                Campus-to-Corporate MarTech 
+              </h2>
               <video
                 src={sampleVideo1}
                 autoPlay
@@ -112,7 +114,9 @@ const CustomGrid = () => {
 
           {/* AI Text Column */}
           <div className="flex items-end justify-center mb-6 select-none">
-            <p className="text-6xl md:text-7xl lg:text-8xl font-semibold text-white">AI</p>
+            <p className="text-6xl md:text-7xl lg:text-8xl font-semibold text-white whitespace-nowrap">
+              AI
+            </p>
           </div>
 
           {/* Top Video */}
@@ -126,10 +130,11 @@ const CustomGrid = () => {
               overflow: 'hidden',
             }}
           >
-            <h2 className="text-white font-bold mt-4 select-none text-base md:text-xl lg:text-2xl">
-              We are India's leading <span className="text-lg md:text-2xl">growth marketing agency</span>
+            <h2 className="text-white font-bold mt-4 select-none text-[clamp(1rem,1.8vw,1.5rem)] whitespace-nowrap">
+              Driving Real Outcomes for  {' '}
+              <span className="text-[clamp(1rem,2vw,1.7rem)]">Colleges & Corporates Alike</span>
             </h2>
-            <div className="flex-1 overflow-hidden  relative">
+            <div className="flex-1 overflow-hidden relative">
               <video
                 src={sampleVideo2}
                 autoPlay
@@ -155,7 +160,7 @@ const CustomGrid = () => {
               overflow: 'hidden',
             }}
           >
-            <div className="flex-1 overflow-hidden  relative">
+            <div className="flex-1 overflow-hidden relative">
               <video
                 src={sampleVideo3}
                 autoPlay
@@ -180,8 +185,8 @@ const CustomGrid = () => {
               transformOrigin: 'center center',
             }}
           >
-            <h2 className="mb-2 select-none text-4xl md:text-5xl lg:text-6xl text-white">
-              <span className="font-bold">Creative</span> Solutions
+            <h2 className=" text-center text-white font-bold text-[clamp(1rem,2vw,2rem)] whitespace-nowrap">
+              <span className="font-bold">Creative Strategies</span> <br /> Performance-Driven Results. 
             </h2>
           </div>
         </div>
@@ -191,3 +196,4 @@ const CustomGrid = () => {
 };
 
 export default CustomGrid;
+

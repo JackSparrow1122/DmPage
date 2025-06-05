@@ -34,13 +34,13 @@ const servicesData = {
       bg: img1,
     },
     {
-      title: "Brand Elevation",
-      description: " Strategic positioning through result-driven campaigns ",
+      title: "Audience Reach",
+      description: "Targeted content across high-conversion platforms ",
       bg: img2,
     },
     {
       title: "Engagement Amplification",
-      description: "Socialmedia, performance & branded content ",
+      description: "Social media, performance & branded content ",
       bg: img3,
     },
     {

@@ -170,14 +170,14 @@ export default function WaveCircle() {
           </h2>
 
           <div className="relative h-[100px] mt-4 flex items-center justify-center text-white">
-            <p ref={para1Ref} className="absolute text-lg sm:text-xl md:text-5xl font-bold">
-              Want visibility?
+            <p ref={para1Ref} className="absolute text-lg sm:text-xl md:text-4xl font-bold">
+              Is your visibility reaching the right audience?
             </p>
-            <p ref={para2Ref} className="absolute text-lg sm:text-xl md:text-5xl font-bold">
-              The kind that actually drives engagement?
+            <p ref={para2Ref} className="absolute text-lg sm:text-xl md:text-4xl font-bold">
+              Are your campaigns converting into real outcomes? 
             </p>
-            <p ref={para3Ref} className="absolute text-lg sm:text-xl md:text-5xl font-bold">
-              Need it for events, admissions, or brand presence?
+            <p ref={para3Ref} className="absolute text-lg sm:text-xl md:text-4xl font-bold">
+              Need digital efforts aligned to admissions or employer branding??
             </p>
           </div>
         </div>
@@ -190,8 +190,8 @@ export default function WaveCircle() {
                       bg-gradient-to-r from-[#26dde5] via-[#00aae1] to-[#0088E8] 
                       bg-clip-text text-transparent z-10 px-2 max-w-screen-md text-center"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              Get it all right here—at Gryphon Academy.
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+              We're your custom digital growth partner. One that adapts to your goals, pace, and purpose.  
             </h1>
             <button className="px-6 py-3 mt-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200">
               Know More
