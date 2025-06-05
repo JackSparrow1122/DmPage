@@ -191,7 +191,7 @@ export default function WaveCircle() {
                       bg-clip-text text-transparent z-10 px-2 max-w-screen-md text-center"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-              We're your custom digital growth partner. One that adapts to your goals, pace, and purpose.  
+              We're your custom digital growth partner. <br />  One that adapts to your goals, pace, and purpose.
             </h1>
             <button className="px-6 py-3 mt-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200">
               Know More
